@@ -10,7 +10,6 @@ angular
     $scope.allData = allData;
     $scope.viewing = $scope.allData;
     $scope.calcData = [];
-
     // Searches for a specific pokemon
     $scope.search = function(name){
       $scope.calcData = [];
@@ -22,7 +21,7 @@ angular
           if($scope.allData[i].name.includes(name)){
             var family = $scope.allData[i].familyID;
             for(var j=0;j<len;j++){
-              if($scope.allData[j].familyID===family){
+              if($scope.allData[j].familyID===family && results.indexOf($scope.allData[j])<0){
                 results.push($scope.allData[j]);
               }
             }
@@ -39,7 +38,7 @@ angular
     }
     // Estimates CP
     $scope.cpEst = function(cp, multiplier){
-      var range = 0.2;
+      var range = 0.15;
       var min = multiplier-range;
       var max = multiplier+range;
       var range = " "
@@ -57,8 +56,6 @@ angular
         $scope.search($scope.searchTerm);
       }
     };
-
-
 
   }])
   .filter('capitalize', function() {

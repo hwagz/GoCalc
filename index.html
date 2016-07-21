@@ -16,17 +16,19 @@
       <button type="button" ng-click="reset()">Reset</button>
       <table>
         <tr>
+          <td>#</td>
           <td>Name</td>
           <td>Type</td>
           <td>Type</td>
-          <td>Base Stamina</td>
-          <td>Base Attack</td>
-          <td>Base Defense</td>
-          <td>Candy to Evolve</td>
+          <td>Base Stam</td>
+          <td>Base Atk</td>
+          <td>Base Def</td>
+          <td>CTE</td>
           <td>Current CP?</td>
           <td>Evolved CP Range</td>
         </tr>
         <tr ng-repeat="poke in viewing track by $index">
+          <td>{{poke.number}}</td>
           <td>{{poke.name | capitalize}}</td>
           <td>{{poke.type1 | capitalize}}</td>
           <td>{{poke.type2 || "" | capitalize}}</td>
