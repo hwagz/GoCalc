@@ -5,43 +5,44 @@
     <title>Test Page</title>
   </head>
 
-  <script src="go-calc/js/angular.min.js"></script>
-  <script src="go-calc/js/jquery.min.js"></script>
-  <script src="go-calc/js/pokeData.js"></script>
-  <script src="go-calc/js/goCalc.js"></script>
-  <link rel="stylesheet" href="go-calc/css/goStyle.css" media="screen" title="no title" charset="utf-8">
+  <script src="pokemon-go-calculator/js/angular.min.js"></script>
+  <script src="pokemon-go-calculator/js/jquery.min.js"></script>
+  <script src="pokemon-go-calculator/js/underscore-min.js"></script>
+  <script src="pokemon-go-calculator/js/pokeData.js"></script>
+  <script src="pokemon-go-calculator/js/goCalc.js"></script>
+  <link rel="stylesheet" href="pokemon-go-calculator/css/goStyle.css" media="screen" title="no title" charset="utf-8">
   <body>
-    <div class="appBody" ng-app="goCalc" ng-controller="goCalcCtrl" ng-cloak ng-keydown="keyHandler($event)" tabindex="0">
-      <input type="text" ng-model="searchTerm"><button type="button" ng-click="search(searchTerm)">Search</button>
+    <div class="appBody" ng-app="goCalc" ng-controller="goCalcCtrl" ng-cloak  tabindex="0">
+      <input type="text" ng-model="searchTerm" ng-keydown="keyHandler($event)"><button type="button" ng-click="search(searchTerm)">Search</button>
       <button type="button" ng-click="reset()">Reset</button>
       <table>
         <tr>
-          <td>#</td>
-          <td>Name</td>
-          <td>Type</td>
-          <td>Type</td>
-          <td>Base Stam</td>
-          <td>Base Atk</td>
-          <td>Base Def</td>
-          <td>CTE</td>
+          <td ng-click="sort('number')">#</td>
+          <td ng-click="sort('name')">Name</td>
+          <td ng-click="sort('type1')">Type</td>
+          <td ng-click="sort('maxCP')">Max CP</td>
+          <td ng-click="sort('maxHP')">Max HP</td>
+          <td ng-click="sort('baseStamina')">Stam</td>
+          <td ng-click="sort('baseAttack')">Atk</td>
+          <td ng-click="sort('baseDefense')">Def</td>
+          <td ng-click="sort('candyToEvolve')">CTE</td>
           <td>Current CP?</td>
           <td>Evolved CP Range</td>
         </tr>
         <tr ng-repeat="poke in viewing track by $index">
           <td>{{poke.number}}</td>
           <td>{{poke.name | capitalize}}</td>
-          <td>{{poke.type1 | capitalize}}</td>
-          <td>{{poke.type2 || "" | capitalize}}</td>
-          <td>{{poke.stats.baseStamina}}</td>
-          <td>{{poke.stats.baseAttack}}</td>
-          <td>{{poke.stats.baseDefense}}</td>
+          <td>{{typing(poke.type1,poke.type2)}}</td>
+          <td>{{poke.maxCP}}</td>
+          <td>{{poke.maxHP}}</td>
+          <td>{{poke.baseStamina}}</td>
+          <td>{{poke.baseAttack}}</td>
+          <td>{{poke.baseDefense}}</td>
           <td>{{poke.candyToEvolve || ""}}</td>
           <td><input type="text" ng-model="calcData[$index]" ng-show="poke.candyToEvolve"></td>
-          <td>{{cpEst(calcData[$index],poke.evoMultiplier) || ""}}</td>
+          <td>{{cpEst(calcData[$index],poke) || ""}}</td>
         </tr>
       </table>
-
-
     </div>
   </body>
 </html>
