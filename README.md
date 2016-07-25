@@ -1,7 +1,8 @@
 # GoCalc
 Calculator for Pokemon Go
 
-Directions: 
+Directions:
+
 1. Download the entire file
 
 2. Delete the existing pokemon-go-calculator.zip file because it's probably out of date
