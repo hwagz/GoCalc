@@ -87,7 +87,7 @@ var allData = [{
             baseDefense : 142,
             familyID :  7 ,
             candyToEvolve: 25,
-            evoMultiplier: 1.7
+            evoMultiplier: 1.6
 },
 {
             name: "wartortle",
@@ -100,7 +100,7 @@ var allData = [{
             baseDefense : 176,
             familyID :  7 ,
             candyToEvolve: 100,
-            evoMultiplier: 1.7
+            evoMultiplier: 1.6
 },
 {
             name: "blastoise",
